@@ -1,4 +1,4 @@
-// Abstractions - These satisfy DIP (Dependency Inversion Principle) and ISP (Interface Segregation Principle)
+// Abstractions - DIP (Dependency Inversion Principle) and ISP (Interface Segregation Principle)
 interface InputDevice {
   input(): string;
 }
@@ -53,31 +53,65 @@ class Computer {
   constructor(
     private _color: string,
     private _dimensions: string,
-    private inputDevice: InputDevice[],
-    private processor: Processor,
-    private memory: Memory,
-    private monitor: OutputDevice,
+    private _inputDevice: InputDevice[],
+    private _processor: Processor,
+    private _memory: Memory,
+    private _monitor: OutputDevice,
   ) {}
 
-  // Getter for color
+  // Getter and Setter for color
   get color(): string {
     return this._color;
   }
 
-  // Setter for color
   set color(value: string) {
     this._color = value;
   }
 
-  // Getter for dimensions
+  // Getter and Setter for dimensions
   get dimensions(): string {
     return this._dimensions;
   }
 
-  // Setter for dimensions
   set dimensions(value: string) {
     this._dimensions = value;
   }
+
+  // Getter and Setter Input Devices
+get inputDevice(): InputDevice[] {
+  return this._inputDevice;
+}
+
+set inputDevice(value: InputDevice[]) {
+  this._inputDevice = value;
+}
+
+// Getter and Setter Processor
+get processor(): Processor {
+  return this._processor;
+}
+
+set processor(value: Processor) {
+  this._processor = value;
+}
+
+// Getter and Setter Memory
+get memory(): Memory {
+  return this._memory;
+}
+
+set memory(value: Memory) {
+  this._memory = value;
+}
+
+// Getter and Setter Monitor
+get monitor(): OutputDevice {
+  return this._monitor;
+}
+
+set monitor(value: OutputDevice) {
+  this._monitor = value;
+}
 
   // Methods
   input(): string[] {
